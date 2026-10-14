@@ -1,0 +1,87 @@
+MAEKER ZEITERFASSUNG – WINDOWS-ORDNERPAKET
+=======================================
+Windows 10/11, 64 Bit (x64). Jeder Arbeitsplatz arbeitet mit eigenen Daten.
+
+1. ZIP vollständig entpacken, z. B. nach Downloads\Maeker-Zeiterfassung.
+   Nicht im ZIP starten, nicht von M:/Netzlaufwerken oder aus einem
+   synchronisierten OneDrive-Ordner.
+2. START.cmd doppelklicken. Keine Python- oder Datenbankinstallation nötig.
+3. Beim ersten Start Verwaltungskonto und eigenes Passwort anlegen.
+   Anschließend öffnet sich der Browser. Das Startfenster geöffnet lassen.
+4. Unter Verwaltung ein Studentenkonto anlegen. Regeln/Tagesstunden prüfen,
+   einen zeitlich begrenzten Plan für dieses Profil erfassen oder hochladen,
+   korrigieren und ausdrücklich aktivieren. Dann als Student anmelden.
+   Fehlende Regeln/Stunden bleiben unbekannt, nicht automatisch null.
+5. Einstempeln, Pause, Ausstempeln wie gewohnt. Browser schließen beendet
+   keine Buchung. Auch nach Beenden/Neustart bleibt eine offene Buchung erhalten.
+
+ALLE DATEIEN IM ORDNER
+- START.cmd                    Anwendung starten / wieder öffnen.
+- SICHERN.cmd                  Eine konsistente Datensicherung erstellen.
+- MONATSBERICHT.cmd             Fällige lokale Berichte prüfen/versenden.
+- AUTOMATIK_EINRICHTEN.cmd      Optional: Windows-Aufgaben für Sicherung und
+                               Prüfung fälliger Mails einrichten.
+- Daten\zeiterfassung.sqlite3  Benutzer, Zeiten, Pläne, Urlaub und Berichte.
+- Daten\Plaene                 Hochgeladene Dokumente.
+- Daten\einstellungen.json     Lokale Einstellungen und geheime Schlüssel.
+- Sicherungen                  Datensicherungen als ZIP.
+- Programm und Laufzeit         Mitgelieferte Anwendung und Python-Laufzeit.
+
+DATEN BLEIBEN GETRENNT
+Die Kopie auf PC A teilt keine Daten mit PC B. Keine gemeinsame Übersicht
+und kein gemeinsamer Chefbericht über alle PCs. Eine Kopie samt Datenordner
+ist dieselbe Datenbank, keine neue leere Installation. Für einen neuen
+Arbeitsplatz das unveränderte Download-ZIP entpacken. Die alte zentrale
+Serveranleitung gilt nicht für dieses Ordnerpaket.
+
+SICHERUNG UND WIEDERHERSTELLUNG
+Beim Start und während des Betriebs wird täglich eine lokale Sicherung
+angelegt. SICHERN.cmd erstellt zusätzlich eine Sicherung, auch bei laufender
+Anwendung. Kopiere die Sicherungs-ZIP auf ein durch die IT geschütztes
+Sicherungsziel, etwa M:. Eine Sicherung auf derselben Festplatte schützt
+nicht gegen deren Ausfall. Sicherungen enthalten auch Konten und geheime
+Mail-Einstellungen; nur berechtigten Personen Zugriff geben.
+
+Zum Wiederherstellen START-Fenster mit Strg+C beenden. Vorhandenen Daten-
+ordner zuerst separat sichern. Aus der gewünschten Sicherungs-ZIP den
+Ordner Daten vollständig in eine separate Kopie der Anwendung entpacken.
+Mit dieser Kopie anmelden, Zeiten und Dokumente prüfen; vorübergehend keine
+Mail-Automatik einrichten. Erst nach Prüfung die wiederhergestellte Kopie
+weiterverwenden. Niemals Daten verschiedener Arbeitsplätze zusammenkopieren.
+Aufbewahrungs-/Löschfristen mit Maeker festlegen; keine erfundene Löschfrist.
+
+MONATSBERICHT – OPTIONAL EINRICHTEN
+Ohne Mail-Einrichtung verschickt das Paket keine echten Mails. Wenn gewünscht:
+In der Verwaltung Empfänger und ersten Berichtsmonat einstellen. In
+Daten\einstellungen.json unter mail die von der IT freigegebenen SMTP-Werte
+eintragen. Datei vertraulich behandeln. Danach Anwendung neu starten.
+Kein Microsoft-Graph/OAuth-Login implementiert; erlaubt ist ein geeigneter
+Firmen-SMTP-Relay bzw. eine von der IT freigegebene SMTP-Schnittstelle.
+Der Bericht enthält nur die Daten dieses Ordners/Arbeitsplatzes.
+
+Ohne Windows-Aufgabe holt die laufende Anwendung fällige Berichte nach.
+AUTOMATIK_EINRICHTEN.cmd richtet optional Aufgaben für 07:00 Uhr und die
+Windows-Anmeldung ein. Der Rechner muss eingeschaltet und der Benutzer
+angemeldet sein; Zeitzone Windows Europe/Berlin einstellen. Bei ausgeschal-
+tetem PC erfolgt das Nachholen beim nächsten Start. Der Browser muss dabei
+nicht geöffnet sein. Beim Verschieben/Umbenennen des Ordners alte Aufgaben
+in der Windows-Aufgabenplanung entfernen und am neuen Ort erneut einrichten.
+Wenn Windows das Einrichten verweigert, muss die IT diese Aufgaben anlegen.
+
+SICHERHEIT UND BETRIEB
+Das Programm lauscht ausschließlich auf diesem PC (127.0.0.1), nicht im LAN.
+Der Browser spricht lokal per HTTP mit dem eigenen Prozess. Für gemeinsamen
+Netzzugriff wäre wieder eine zentrale Installation mit HTTPS erforderlich.
+Ordner und Sicherungen im persönlichen Windows-Benutzerbereich aufbewahren.
+Keine voreingestellten Passwörter. Keine Internetverbindung für den normalen
+Betrieb oder die lokale Dokumenterkennung nötig. Für echten Mailversand wird
+natürlich der Firmen-Mailserver benötigt. Die OCR liefert Vorschläge und
+übernimmt niemals automatisch verbindliche Stunden aus Farbfeldern.
+
+TESTSTAND
+55 Fach-/Rechtetests auf SQLite bestanden; Windows-Laufzeit und native
+Bibliotheken sind im Paket enthalten. Diese Entwicklungsumgebung ist Linux:
+Ein tatsächlicher Start unter Windows konnte hier nicht ausgeführt werden.
+Der erste Start auf einem Windows-PC ist daher die verbleibende Plattform-
+prüfung. Bei einem Fehler den Wortlaut im Startfenster melden. Programme nur
+starten, wenn die Herkunft (dieses Projekt) bekannt ist.

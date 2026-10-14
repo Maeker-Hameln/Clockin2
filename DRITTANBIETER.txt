@@ -1,0 +1,1 @@
+Python und alle Bibliotheken sind mit ihren Lizenzdateien und dist-info-Metadaten unter Laufzeit enthalten. OCR-Modelle liegen lokal im rapidocr_onnxruntime-Paket. Microsoft-CRT-DLLs sind aus dem msvc-runtime-Wheel enthalten. Komponenten und Download-Prüfsummen: PAKET_INHALT.json.

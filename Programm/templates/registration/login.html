@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<section class="login card"><p class="eyebrow">Willkommen</p><h1>Anmelden</h1><p>Mit den von Maeker bereitgestellten Zugangsdaten.</p><form method="post">{% csrf_token %}{{ form.as_p }}<button>Anmelden</button></form></section>{% endblock %}

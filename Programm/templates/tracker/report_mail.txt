@@ -1,0 +1,8 @@
+{% load tracker_tags %}Maeker · Zeiterfassung {{ report.month|date:'m.Y' }}
+{% if report.revision %}KORREKTUR · Fassung {{ report.revision }}: {{ report.reason }}{% endif %}
+{% if data.incomplete %}VORLÄUFIG / UNVOLLSTÄNDIG{% endif %}
+{% for s in data.students %}
+{{ s.name }}: Soll {{ s.sums.target|duration }}, Nettoarbeit {{ s.sums.work|duration }}, Pause {{ s.sums.pause|duration }}, Hochschule {{ s.sums.university|duration }}, Urlaub {{ s.sums.leave|duration }}, Feiertag {{ s.sums.holiday|duration }}, Gesamt {{ s.sums.total|duration }}, Differenz {{ s.sums.delta|duration }}.
+Offene Buchungen: {{ s.open_bookings|length }}. Fehlende Planwerte: {{ s.missing_plan_days|length }}. Ungeklärte Tage: {{ s.issues|length }}.{% for i in s.issues %} {{ i.date|german_date }}: {{ i.messages|join:', ' }}.{% endfor %}
+{% endfor %}
+Tageswerte: siehe CSV-Anhang. Dauern in Stunden:Minuten.
